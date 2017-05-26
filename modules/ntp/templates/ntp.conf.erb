@@ -1,0 +1,18 @@
+# ntp.conf: Managed by puppet.
+# 
+#
+tinker panic 0
+disable monitor
+
+# Restrict
+<% @ntp_restrict.each do |restrict| -%>
+restrict <%= restrict %>
+<% end -%>
+
+# server
+<% @ntp_servers.each do |server| -%>
+server <%= restrict %>
+<% end -%>
+
+# Driftfile
+driftfile /var/lib/ntp/drift
